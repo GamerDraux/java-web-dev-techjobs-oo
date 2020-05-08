@@ -2,19 +2,28 @@ package org.launchcode.techjobs_oo.tests;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Before;
 import org.junit.Assert;
 import org.launchcode.techjobs_oo.*;
 
 public class JobTest {
-    Job job1 = new Job();
-    Job job2 = new Job();
-    Job job3 = new Job("Product Tester", new Employer(
-            "ACME"), new Location("Desert"),
-            new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+    Job job1;
+    Job job2;
+    Job job3;
 
-    @Test //tests that each new job is given a unique
-    // id
-    public void newIdForEachJob(){
+    @Before
+    public void initialize() {
+        job1 = new Job();
+        job2 = new Job();
+        job3 = new Job("Product Tester", new Employer(
+                "ACME"), new Location("Desert"),
+                new PositionType("Quality Control"),
+                new CoreCompetency("Persistence"));
+    }
+
+    @Test //tests that 2 jobs are not equal because of
+            // same fields
+    public void jobsNotEqual(){
         Assert.assertNotEquals(job1, job2);
     }
 
@@ -96,7 +105,9 @@ public class JobTest {
                 new CoreCompetency("Doing Things");
         Job partialJob = new Job("Partial Job",employer,
                 location, positionType,coreCompetency);
-        Assert.assertEquals(partialJob.toString(), "\nID: 4\nName: Partial Job\nEmployer: " +
+        Assert.assertEquals(partialJob.toString(), "\nID" +
+                        ": " +partialJob.getId()+
+                "\nName: Partial Job\nEmployer: " +
                 "Stuff " +
                 "Inc\nLocation: " +
                 "A Place\nPosition Type: Data not" +

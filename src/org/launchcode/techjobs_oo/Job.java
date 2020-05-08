@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    private final int id;
+    private int id;
     private static int nextId = 1;
 
     private String name;
@@ -101,6 +101,7 @@ public class Job {
 
         if (this.name==null){name=na;}else{name=
                 this.name;}
+        assert this.employer != null;
         if (this.employer.getValue()==null){employer=na;}else{employer=this.employer.getValue();}
         if (this.location.getValue()==null){location=na;}else{location=this.location.getValue();}
         if (this.positionType.getValue()==null){positionType=na;}else{positionType=this.positionType.getValue();}
