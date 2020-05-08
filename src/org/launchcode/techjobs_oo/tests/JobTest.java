@@ -8,8 +8,9 @@ import org.launchcode.techjobs_oo.*;
 public class JobTest {
     Job job1 = new Job();
     Job job2 = new Job();
-    Job job3 = new Job("Product tester", new Employer(
-            "ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    Job job3 = new Job("Product Tester", new Employer(
+            "ACME"), new Location("Desert"),
+            new PositionType("Quality Control"), new CoreCompetency("Persistence"));
 
     @Test //tests that each new job is given a unique
     // id
@@ -25,7 +26,7 @@ public class JobTest {
 
     @Test //tests that constructor sets value of name
     public void jobConstructorSetsNameOfJob(){
-        Assert.assertTrue(job3.getName()!=null&& job3.getName().equals("Product tester"));
+        Assert.assertTrue(job3.getName()!=null&& job3.getName().equals("Product Tester"));
     }
 
     @Test //tests that constructor sets value of Employer
@@ -41,7 +42,7 @@ public class JobTest {
     @Test //tests that constructor sets value of
     // PositionType
     public void jobConstructorSetsPositionTypeOfJob(){
-        Assert.assertTrue(job3.getPositionType()!=null&&job3.getPositionType().getValue().equals("Quality control"));
+        Assert.assertTrue(job3.getPositionType()!=null&&job3.getPositionType().getValue().equals("Quality Control"));
     }
 
     @Test //tests that constructor sets value of core
@@ -65,4 +66,51 @@ public class JobTest {
                 location,positionType,coreCompetency);
         Assert.assertNotEquals(job4, job5);
     }
+
+    @Test //test the toString method starts and ends with
+    // a blank line
+    public void toStringStartsAndEndsWithBlankLine(){
+        Assert.assertTrue(job3.toString().startsWith("\n")&&job3.toString().endsWith("\n"));
+    }
+
+    @Test //Test that toString gives a block with labels
+    // and the values for each field, each on a separate
+    // line
+    public void toStringCreatesFieldsAndValuesOnSeparateLines(){
+        Assert.assertEquals(job3.toString(), "\nID: " + job3.getId() +
+                "\nName: " +
+                "Product Tester\nEmployer: " +
+                "ACME\nLocation: Desert\nPosition Type: " +
+                "Quality Control\nCore Competency: " +
+                "Persistence\n");
+    }
+
+    @Test //testing if one of the fields is null, the
+    // toString method prints "Data not Available" in
+    // field value
+    public void dataNotAvailableTest(){
+        Employer employer =new Employer("Stuff Inc");
+        Location location = new Location("A Place");
+        PositionType positionType =new PositionType();
+        CoreCompetency coreCompetency =
+                new CoreCompetency("Doing Things");
+        Job partialJob = new Job("Partial Job",employer,
+                location, positionType,coreCompetency);
+        Assert.assertEquals(partialJob.toString(), "\nID: 4\nName: Partial Job\nEmployer: " +
+                "Stuff " +
+                "Inc\nLocation: " +
+                "A Place\nPosition Type: Data not" +
+                " available\nCore Competency: " +
+                "Doing Things\n");
+    }
+
+    @Test //if there is no data in the Job aside from an
+    // ID, it should print a Does not exist line with
+    // blank lines before and after
+    public void jobHasNoInformationExceptID(){
+        Job blankJob = new Job();
+        Assert.assertEquals(blankJob.toString(), "\nOOPS!  This job does not seem to " +
+                "exist.\n");
+    }
+
 }

@@ -13,9 +13,6 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
     public Job(){
         this.id = nextId;
         nextId++;
@@ -33,9 +30,6 @@ public class Job {
         this.coreCompetency = aCoreCompetency;
     }
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,11 +43,6 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
-
 
     public int getId() {
         return id;
@@ -97,5 +86,33 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    public String toString(){
+        String name;
+        String employer;
+        String location;
+        String positionType;
+        String na = "Data not available";
+        if (this.name==null&&this.employer==null&&this.location==null&&this.positionType==null&&this.coreCompetency==null){
+            return "\nOOPS!  This job does not seem to " +
+                    "exist.\n";
+        }
+
+        if (this.name==null){name=na;}else{name=
+                this.name;}
+        if (this.employer.getValue()==null){employer=na;}else{employer=this.employer.getValue();}
+        if (this.location.getValue()==null){location=na;}else{location=this.location.getValue();}
+        if (this.positionType.getValue()==null){positionType=na;}else{positionType=this.positionType.getValue();}
+        String coreCompetency;
+        if (this.coreCompetency.getValue()==null){coreCompetency=na;}else{coreCompetency=this.coreCompetency.getValue();}
+
+        return "\nID: "+ this.id+"\nName: "+name+
+        "\nEmployer: "+employer+"\nLocation" +
+        ":" +
+        " "+location+"\nPosition " +
+        "Type: "+positionType+
+        "\nCore Competency: "+coreCompetency +
+        "\n";
     }
 }
