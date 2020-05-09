@@ -1,9 +1,8 @@
 package org.launchcode.techjobs_oo.tests;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Before;
-import org.junit.Assert;
 import org.launchcode.techjobs_oo.*;
 
 public class JobTest {
@@ -30,6 +29,7 @@ public class JobTest {
     @Test //tests that constructor creates an instance of
     // the Job class
     public void jobConstructorSetsInstanceOfJob(){
+        //noinspection ConstantConditions
         Assert.assertTrue(job3 instanceof Job);
     }
 
