@@ -20,6 +20,11 @@ public class JobTest {
                 new CoreCompetency("Persistence"));
     }
 
+    @Test //tests that a job is equal to itself
+    public void sameJobEqual(){
+        Assert.assertEquals(job1,job1);
+    }
+
     @Test //tests that 2 jobs are not equal because of
             // same fields
     public void jobsNotEqual(){
