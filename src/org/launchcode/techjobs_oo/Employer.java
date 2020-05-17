@@ -5,8 +5,7 @@ import java.util.Objects;
 public class Employer extends JobField {
 
     public Employer() {
-        id = nextId;
-        nextId++;
+      super();
     }
 
     public Employer(String value) {

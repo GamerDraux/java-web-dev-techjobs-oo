@@ -4,8 +4,7 @@ import java.util.Objects;
 
 public class CoreCompetency extends JobField{
     public CoreCompetency() {
-        this.id = nextId;
-        nextId++;
+       super();
     }
 
     public CoreCompetency(String value) {

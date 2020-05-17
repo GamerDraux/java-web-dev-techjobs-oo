@@ -4,8 +4,7 @@ import java.util.Objects;
 
 public class Location extends JobField{
     public Location() {
-        id = nextId;
-        nextId++;
+        super();
     }
 
     public Location(String value){
