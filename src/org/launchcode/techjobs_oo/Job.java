@@ -99,14 +99,14 @@ public class Job {
                     "exist.\n";
         }
 
-        if (this.name==null){name=na;}else{name=
+        if (this.name==null||this.name.isBlank()){name=na;}else{name=
                 this.name;}
         assert this.employer != null;
-        if (this.employer.getValue()==null){employer=na;}else{employer=this.employer.getValue();}
-        if (this.location.getValue()==null){location=na;}else{location=this.location.getValue();}
-        if (this.positionType.getValue()==null){positionType=na;}else{positionType=this.positionType.getValue();}
+        if (this.employer.getValue()==null||this.employer.getValue().isBlank()){employer=na;}else{employer=this.employer.getValue();}
+        if (this.location.getValue()==null||this.location.getValue().isBlank()){location=na;}else{location=this.location.getValue();}
+        if (this.positionType.getValue()==null||this.positionType.getValue().isBlank()){positionType=na;}else{positionType=this.positionType.getValue();}
         String coreCompetency;
-        if (this.coreCompetency.getValue()==null){coreCompetency=na;}else{coreCompetency=this.coreCompetency.getValue();}
+        if (this.coreCompetency.getValue()==null||this.coreCompetency.getValue().isBlank()){coreCompetency=na;}else{coreCompetency=this.coreCompetency.getValue();}
 
         return "\nID: "+ this.id+"\nName: "+name+
         "\nEmployer: "+employer+"\nLocation" +
